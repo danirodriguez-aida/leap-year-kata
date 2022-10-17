@@ -31,5 +31,13 @@ namespace leap_year_tests {
 
             result.Should().BeTrue();
         }
+
+        [Test]
+        public void return_not_leap_year_when_not_divisible_by_4()
+        {
+            var result = LeapYearCalculator.IsLeapYear(3);
+
+            result.Should().BeFalse();
+        }
     }
 }
