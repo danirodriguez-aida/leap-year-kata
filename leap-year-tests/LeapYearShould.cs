@@ -1,4 +1,5 @@
 using FluentAssertions;
+using leap_year_kata;
 
 namespace leap_year_tests {
     public class LeapYearCalculatorShould {
@@ -6,20 +7,21 @@ namespace leap_year_tests {
         public void Setup() {
         }
 
-        [Test]
-        public void return_leap_year_when_year_divisible_by_400()
+        [TestCase (400, TestName = "for 400")]
+        [TestCase (400, TestName = "for 800")]
+        public void return_leap_year_when_divisible_by_400(int year)
         {
-            var result = LeapYearCalculator.IsLeapYear(400);
+            var result = LeapYearCalculator.IsLeapYear(year);
 
             result.Should().BeTrue();
         }
-    }
 
-    public class LeapYearCalculator
-    {
-        public static bool IsLeapYear(int year)
+        [Test]
+        public void return_not_leap_year_when_divisible_by_100_but_not_400()
         {
-            return true;
+            var result = LeapYearCalculator.IsLeapYear(100);
+
+            result.Should().BeFalse();
         }
     }
 }
