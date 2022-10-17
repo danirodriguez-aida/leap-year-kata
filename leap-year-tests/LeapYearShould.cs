@@ -23,5 +23,13 @@ namespace leap_year_tests {
 
             result.Should().BeFalse();
         }
+
+        [Test]
+        public void return_leap_year_when_divisible_by_4_but_not_100()
+        {
+            var result = LeapYearCalculator.IsLeapYear(4);
+
+            result.Should().BeTrue();
+        }
     }
 }
